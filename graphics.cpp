@@ -8,7 +8,6 @@ int main() {
     initscr();
     noecho();
     cbreak();
-    raw();
     clear();
 
     WINDOW *titleWin = NULL, *mainWin = NULL, *borderWin = NULL;
@@ -27,8 +26,6 @@ int main() {
 
     // main display window
     mainWin = newwin(LINES - TITLE_WINDOW_HEIGHT - 2, COLS - 2, TITLE_WINDOW_HEIGHT + 1, 1);
-    int cursX = COLS/2, cursY = (LINES - TITLE_WINDOW_HEIGHT - 2) / 2;
-    wmove(mainWin, cursY, cursX);
 
     //refresh all
     refresh();
@@ -36,30 +33,12 @@ int main() {
     wrefresh(borderWin);
     wrefresh(mainWin);
 
-    std::vector<point> square = createRectangle(CUBE_SIZE, CUBE_SIZE, 0, 0, 0);
+    char ch;
+    while ((ch = getch()) != 'q') {
+        continue;
+    }
+
+    endwin();
 
     return 0;
-}
-
-std::vector<point> createRectangle(float width, float height, float centre_x, float centre_y, float centre_z) {
-    std::vector<point> rectangle(4);
-    
-    rectangle.push_back((point){centre_x-width/2, centre_y+height/2, centre_z});
-    rectangle.push_back((point){centre_x-width/2, centre_y-height/2, centre_z});
-    rectangle.push_back((point){centre_x+width/2, centre_y-height/2, centre_z});
-    rectangle.push_back((point){centre_x+width/2, centre_y+height/2, centre_z});
-
-    return rectangle;
-}
-
-std::vector<point> rotatePoints(std::vector<point> points) {
-
-}
-
-std::vector<point> transformPoints(std::vector<point> points) {
-
-}
-
-std::vector<point> scalePoints(std::vector<point> points) {
-
 }

@@ -7,7 +7,3 @@ struct point {
     float y;
     float z;
 };
-
-std::vector<point> rotatePoints(std::vector<point> points);
-std::vector<point> transformPoints(std::vector<point> points);
-std::vector<point> scalePoints(std::vector<point> points);
