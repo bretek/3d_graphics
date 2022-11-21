@@ -15,9 +15,10 @@ int main() {
     // title window
     titleWin = newwin(TITLE_WINDOW_HEIGHT, COLS, 0, 0);
     // centered text
-    wmove(titleWin, 0, (COLS/2) - 6);
+    std::string titleText = "Cube";
+    wmove(titleWin, 0, (COLS/2) - titleText.length()/2);
     wattron(titleWin, A_BOLD);
-    waddstr(titleWin, "Game of Life");
+    waddstr(titleWin, titleText.c_str());
     wattroff(titleWin, A_BOLD);
 
     // main display border window
